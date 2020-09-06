@@ -1,0 +1,53 @@
+Subset Maximization
+You are given an array A of length N. You need to find the maximum length of the subset of given array such that the frequency all the elements present in the subset are equal.
+
+Input Format
+
+The first line of input contains an integer, denoting the value of N.
+The second line of input contains N space-separated integers, denoting the elements of array A.
+Output Format
+
+Print the maximum length of the subset of the array A in which frequency of all the elements present in that subset is equal.
+Constraints
+
+Sample Input
+5
+1 2 2 3 3
+Sample Output
+4
+
+'''
+# Sample code to perform I/O:
+
+name = input()                  # Reading input from STDIN
+print('Hi, %s.' % name)         # Writing output to STDOUT
+
+# Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+'''
+noOfElements = int(input())
+array = input()
+elements = array.split()
+'''
+for x in range(noOfElements):
+   print(elements[x])
+'''
+from itertools import groupby
+#print([len(list(group)) for key, group in groupby(elements)])
+#d = dict([(key,len(list(group))) for key, group in groupby(elements)])
+#print(d)
+duplkeys = [];
+values = [];
+for key, group in groupby(elements):
+        duplkeys.append(key)
+        values.append(len(list(group)))
+import operator
+index, value = max(enumerate(values), key=operator.itemgetter(1))
+m = max(values)
+print(m)
+print([duplkeys[i] for i, j in enumerate(values) if j == m])
+'''import collections 
+counter =collections.Counter(elements)
+print(counter)
+
+
+        '''
